@@ -9,8 +9,10 @@ addButton.addEventListener("click", (e) => {
   // Captura informações do formulário e cria o objeto patient
   let patient = getPatientForm(form);
 
-  if (!patientValidate(patient)) {
-    alert("Paciente Inválido!");
+  var error = patientValidate(patient);
+  console.log(error);
+  if (error.length > 0) {
+    showErrorMessages(error);
     return;
   }
 
@@ -22,6 +24,15 @@ addButton.addEventListener("click", (e) => {
 
   form.reset();
 });
+
+function showErrorMessages(errors) {
+  let ul = document.querySelector("#errorMessages");
+  errors.forEach(function (erro) {
+    var li = document.createElement("li");
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+}
 
 function getPatientForm(form) {
   let patient = {
@@ -61,7 +72,11 @@ function assembleTd(data, className) {
 }
 
 function patientValidate(patient) {
-  if (weightIsValid(patient.weight) && heightIsValid(patient.height)) {
-    return true;
-  }
+  let errors = [];
+
+  if (!weightIsValid(patient.weight)) errors.push("Peso Inválido!");
+
+  if (!heightIsValid(patient.height)) errors.push("Altura Inválida!");
+
+  return errors;
 }
