@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Aparecida Nutrição</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Aparecida Nutrição</h1>
+      </div>
+    </header>
+    <main>
+      <section class="container">
+        <h2>Meus pacientes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Peso(kg)</th>
+              <th>Altura(m)</th>
+              <th>Gordura Corporal(%)</th>
+              <th>IMC</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-pacientes">
+            <tr class="paciente" id="firstPatient">
+              <td class="info-nome">Eduardo</td>
+              <td class="info-peso">9700</td>
+              <td class="info-altura">1.92</td>
+              <td class="info-gordura">0</td>
+              <td class="info-imc">0</td>
+            </tr>
+
+            <tr class="paciente">
+              <td class="info-nome">Vinícius</td>
+              <td class="info-peso">87</td>
+              <td class="info-altura">1.66</td>
+              <td class="info-gordura">0</td>
+              <td class="info-imc">0</td>
+            </tr>
+
+            <tr class="paciente">
+              <td class="info-nome">Caio</td>
+              <td class="info-peso">75</td>
+              <td class="info-altura">1.73</td>
+              <td class="info-gordura">0</td>
+              <td class="info-imc">0</td>
+            </tr>
+
+            <tr class="paciente">
+              <td class="info-nome">Thalya</td>
+              <td class="info-peso">67</td>
+              <td class="info-altura">1.62</td>
+              <td class="info-gordura">0</td>
+              <td class="info-imc">0</td>
+            </tr>
+            <tr class="paciente">
+              <td class="info-nome">Tatiana</td>
+              <td class="info-peso">46</td>
+              <td class="info-altura">1.55</td>
+              <td class="info-gordura">19</td>
+              <td class="info-imc">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <section class="container">
+      <!-- Título -->
+      <h2 id="titulo-form" class="mt-10">Adicionar novo paciente</h2>
+      <form class="mb-12" id="form">
+        <!-- Nome -->
+        <div class="">
+          <label for="nome">Nome:</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            placeholder="digite o nome do seu paciente"
+            class="campo"
+          />
+        </div>
+
+        <div class="bottomSection">
+          <!-- Peso -->
+          <div class="grupo">
+            <label for="peso">Peso:</label>
+            <input
+              id="peso"
+              name="peso"
+              type="text"
+              placeholder="digite o peso do seu paciente"
+              class="campo campo-medio"
+            />
+          </div>
+
+          <!-- Altura -->
+          <div class="grupo">
+            <label for="altura">Altura:</label>
+            <input
+              id="altura"
+              name="altura"
+              type="text"
+              placeholder="digite a altura do seu paciente"
+              class="campo campo-medio"
+            />
+          </div>
+
+          <!-- Porcentagem de Gordura -->
+          <div class="grupo">
+            <label for="gordura">% de Gordura:</label>
+            <input
+              id="gordura"
+              type="text"
+              placeholder="digite a porcentagem de gordura do seu paciente"
+              class="campo campo-medio"
+            />
+          </div>
+        </div>
+        <!-- Botão -->
+        <button id="adicionar-paciente" class="botao bto-principal">
+          Adicionar
+        </button>
+      </form>
+    </section>
+    <script src="js/form.js"></script>
+    <script src="js/imc-calculate.js"></script>
+  </body>
+</html>
