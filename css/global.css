@@ -178,7 +178,6 @@ table {
   margin-top: 3rem;
 }
 
-
 /** #### margin-bottom */
 
 .mb-1 {
@@ -227,4 +226,8 @@ table {
 
 .mb-12 {
   margin-bottom: 3rem;
+}
+
+.hidden {
+  display: none;
 }

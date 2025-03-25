@@ -147,8 +147,9 @@ button:disabled {
 
 #errorMessages {
   color: red;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
   display: flex;
+  gap: 1rem;
 }

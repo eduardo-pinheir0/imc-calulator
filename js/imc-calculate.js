@@ -1,4 +1,4 @@
-var patients = document.querySelectorAll(".paciente");
+let patients = document.querySelectorAll(".paciente");
 
 for (var i = 0; i < patients.length; i++) {
   var patient = patients[i];

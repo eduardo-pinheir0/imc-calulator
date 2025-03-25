@@ -10,29 +10,23 @@ addButton.addEventListener("click", (e) => {
   let patient = getPatientForm(form);
 
   var error = patientValidate(patient);
+
+  // Monta o paciente na tabela
+  let trPatient = assembleTr(patient);
+
   console.log(error);
   if (error.length > 0) {
     showErrorMessages(error);
     return;
   }
 
-  // Monta o paciente na tabela
-  let trPatient = assembleTr(patient);
-
   const tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(trPatient);
 
+  const ul = document.querySelector("#errorMessages");
+  ul.innerHTML = "";
   form.reset();
 });
-
-function showErrorMessages(errors) {
-  let ul = document.querySelector("#errorMessages");
-  errors.forEach(function (erro) {
-    var li = document.createElement("li");
-    li.textContent = erro;
-    ul.appendChild(li);
-  });
-}
 
 function getPatientForm(form) {
   let patient = {
@@ -43,6 +37,39 @@ function getPatientForm(form) {
     imc: imcCalculate(form.peso.value, form.altura.value),
   };
   return patient;
+}
+
+function patientValidate(patient) {
+  let errors = [];
+
+  if (patient.name.length == 0)
+    errors.push('O campo "Nome" não pode ser vazio!');
+
+  if (patient.weight.length == 0)
+    errors.push('O campo "Peso" não pode ser vazio!');
+
+  if (patient.height.length == 0)
+    errors.push('O campo "Altura" não pode ser vazio!');
+
+  if (patient.fat.length == 0)
+    errors.push('O campo "% de Gordura" não pode ser vazio!');
+
+  if (!weightIsValid(patient.weight)) errors.push("Peso Inválido!");
+
+  if (!heightIsValid(patient.height)) errors.push("Altura Inválida!");
+
+  return errors;
+}
+
+function showErrorMessages(errors) {
+  let ul = document.querySelector("#errorMessages");
+  ul.innerHTML = "";
+
+  errors.forEach(function (e) {
+    var li = document.createElement("li");
+    li.textContent = e;
+    ul.appendChild(li);
+  });
 }
 
 // Monta um "tr" com as informações do paciente fornecidas pelo formulário
@@ -70,13 +97,4 @@ function assembleTd(data, className) {
 
   return td;
 }
-
-function patientValidate(patient) {
-  let errors = [];
-
-  if (!weightIsValid(patient.weight)) errors.push("Peso Inválido!");
-
-  if (!heightIsValid(patient.height)) errors.push("Altura Inválida!");
-
-  return errors;
-}
+// Cria um array de erros de validação para o paciente
